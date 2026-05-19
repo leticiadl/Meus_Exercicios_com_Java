@@ -1,0 +1,68 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.util.Scanner;
+
+public class Main {
+
+    static void main() {
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter("log.csv"));
+
+
+            Scanner scan = new Scanner(System.in);
+            int opcao = -1;
+
+            IO.println("=== Sistema de Usuário ===");
+
+            while (opcao != 0) {
+                IO.println("Menu");
+                IO.println("1 - Cadastrar usuário");
+                IO.println("2 - Listar usuários");
+                IO.println("3 - Editar usuário");
+                IO.println("0 - Sair");
+
+                try {
+                    opcao = Integer.parseInt(scan.nextLine());
+
+                    switch (opcao) {
+                        case 1:
+                            IO.println("[Executando] Cadastro de usuário");
+                            bw.write("Cadastrar usuário");
+                            bw.newLine();
+
+                            IO.println("Pressione ENTER para voltar ao menu...");
+                            scan.nextLine();
+                            break;
+                        case 2:
+                            IO.println("[Executando] Listagem de usuários");
+                            bw.write("Lista de usuários");
+                            bw.newLine();
+
+                            IO.println("Pressione ENTER para voltar ao menu...");
+                            scan.nextLine();
+                            break;
+                        case 3:
+                            IO.println("[Executanto] Edição de usuário");
+                            bw.write("Editar usuário");
+                            bw.newLine();
+                            IO.println("Pressione ENTER para voltar ao menu...");
+                            scan.nextLine();
+                            break;
+                        case 0:
+                            IO.println("Saindo do sistema");
+                            bw.write("Sair");
+                            bw.newLine();
+                            break;
+                    }
+                } catch (Exception e) {
+                    IO.println("Erro encontrado!");
+                }
+            }
+            scan.close();
+            bw.close();
+            IO.println("Sistema finalizado!");
+        }catch(Exception e){
+            IO.println("Erro ao gravar o arquivo");
+        }
+    }
+}
