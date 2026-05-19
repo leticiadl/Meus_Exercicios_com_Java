@@ -1,0 +1,44 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+
+public class Main {
+
+    static void main() {
+
+        Object[][] planilha = new Object[2][4];
+        planilha[0][0] = "nome";
+        planilha[0][1] = "idade";
+        planilha[0][2] = "altura";
+        planilha[0][3] = "estudante";
+
+        planilha[1][0] = "Lele";
+        planilha[1][1] = 19;
+        planilha[1][2] = 1.70;
+        planilha[1][3] = true;
+
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter("arquivo.csv"));{
+                for (int i = 0; i < planilha.length; i++) {
+                    for (int j = 0; j < planilha[i].length; j++) {
+
+                        Object valor = planilha[i][j];
+
+                        if (valor != null) {
+                            bw.write(String.valueOf(valor));
+                        } else {
+                            bw.write("");
+                        }
+                        if (j < planilha[i].length - 1) {
+                            bw.write(";");
+                        }
+                    }
+                }
+                bw.newLine();
+
+            System.out.println("Arquivo criado com sucesso!");
+        }
+            }catch (Exception e) {
+            System.out.println("Erro ao criar o arquivo!");
+        }
+    }
+}
