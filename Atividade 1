@@ -1,0 +1,26 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+
+public class Main {
+
+    static void main() {
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter("dados.csv"));
+
+            bw.write("Nome, idade");
+            bw.newLine();
+
+            bw.write("João, 18");
+            bw.newLine();
+
+            bw.write("Maria, 22");
+            bw.newLine();
+
+            bw.close();
+
+            System.out.println("Arquivo criado com sucesso!");
+        } catch (Exception e) {
+            System.out.println("Erro encontrado no arquivo");
+        }
+    }
+}
